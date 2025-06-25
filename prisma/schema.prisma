@@ -26,4 +26,5 @@ model Job {
   requirements  String
   responsibilities String
   createdAt   DateTime @default(now())
+  applicationDeadline DateTime
 }

@@ -37,7 +37,7 @@ export async function GET(req: Request) {
 
 
 export async function POST(req: Request) {
-    console.log(req.body)
+    // console.log(req.body)
   try {
     const body = await req.json();
 
@@ -51,9 +51,10 @@ export async function POST(req: Request) {
         description,
         requirements,
       responsibilities,
+      applicationDeadline
     } = body;
      const Salary = parseInt(salary);
-     
+     const deadline = new Date(applicationDeadline);
     const job = await prisma.job.create({
       data: {
         title,
@@ -64,7 +65,8 @@ export async function POST(req: Request) {
        
             description,
             requirements,
-        responsibilities
+        responsibilities,
+        applicationDeadline: deadline,
       },
     });
 

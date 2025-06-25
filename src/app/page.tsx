@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-
 import axios from "axios";
 import debounce from "lodash/debounce";
 import {Satoshi} from "next/font/google";
@@ -102,3 +101,4 @@ const [minSalary,setMinSalary] = useState(5000) // Minimum salary for the range 
     </div>
   );
 }
+

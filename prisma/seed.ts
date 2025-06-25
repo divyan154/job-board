@@ -7,6 +7,12 @@ async function main() {
     "A user-friendly interface lets you browse stunning photos and videos. " +
     "Filter destinations based on interests and travel style, and create personalized.";
 
+  const deadline = (daysFromNow: number) => {
+    const date = new Date();
+    date.setDate(date.getDate() + daysFromNow);
+    return date;
+  };
+
   await prisma.job.createMany({
     data: [
       {
@@ -18,6 +24,7 @@ async function main() {
         description: sharedDescription,
         requirements: "Deep learning, computer vision, Python, PyTorch.",
         responsibilities: "Research and build advanced AI applications.",
+        applicationDeadline: deadline(30),
       },
       {
         title: "Backend Developer",
@@ -28,6 +35,7 @@ async function main() {
         description: sharedDescription,
         requirements: "Java, Spring Boot, AWS, system design.",
         responsibilities: "Develop and maintain backend services.",
+        applicationDeadline: deadline(25),
       },
       {
         title: "Mobile Engineer",
@@ -38,6 +46,7 @@ async function main() {
         description: sharedDescription,
         requirements: "React Native, REST APIs, Redux.",
         responsibilities: "Build mobile features and integrations.",
+        applicationDeadline: deadline(20),
       },
       {
         title: "Frontend Developer",
@@ -48,6 +57,7 @@ async function main() {
         description: sharedDescription,
         requirements: "React, TypeScript, UI/UX fundamentals.",
         responsibilities: "Design and implement user-facing features.",
+        applicationDeadline: deadline(28),
       },
       {
         title: "SDE 1",
@@ -58,6 +68,7 @@ async function main() {
         description: sharedDescription,
         requirements: "DSA, Node.js, system design basics.",
         responsibilities: "Develop backend APIs and services.",
+        applicationDeadline: deadline(18),
       },
       {
         title: "UI Engineer",
@@ -68,6 +79,7 @@ async function main() {
         description: sharedDescription,
         requirements: "Figma to React, performance optimization.",
         responsibilities: "Build reusable components and UIs.",
+        applicationDeadline: deadline(15),
       },
       {
         title: "DevOps Specialist",
@@ -78,6 +90,7 @@ async function main() {
         description: sharedDescription,
         requirements: "AWS, Docker, CI/CD, Kubernetes.",
         responsibilities: "Deploy and monitor services at scale.",
+        applicationDeadline: deadline(35),
       },
       {
         title: "Product Analyst",
@@ -88,6 +101,7 @@ async function main() {
         description: sharedDescription,
         requirements: "Excel, SQL, A/B testing, product sense.",
         responsibilities: "Analyze product data to support decision-making.",
+        applicationDeadline: deadline(22),
       },
     ],
   });

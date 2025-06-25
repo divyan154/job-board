@@ -43,7 +43,7 @@ export default function Filter({
       </div>
 
       {/* Divider */}
-      <div className="hidden lg:block w-[1px] h-8 bg-black" />
+      <div className="hidden lg:block  h-12 top-[140px] left-[720px] border border-[#EAEAEA] w-0.5" />
 
       {/* Location */}
       <div className="relative flex-1 w-full">
@@ -63,12 +63,19 @@ export default function Filter({
       </div>
 
       {/* Divider */}
-      <div className="hidden lg:block w-[1px] h-8 bg-black" />
+      <div className="hidden lg:block  h-12 top-[140px] left-[720px] border border-[#EAEAEA] w-0.5" />
 
       {/* Job Type */}
-      <div className="flex-1 w-full">
+      <div className="relative flex-1 w-full">
+        <Image
+          src="/jobType.png"
+          alt="Type Icon"
+          width={20}
+          height={20}
+          className="absolute left-3 top-1/2 transform -translate-y-1/2"
+        />
         <select
-          className="py-2 px-3 w-full rounded "
+          className="pl-10 py-2 w-full rounded "
           value={type}
           onChange={(e) => setType(e.target.value)}
         >
@@ -81,13 +88,15 @@ export default function Filter({
       </div>
 
       {/* Divider */}
-      <div className="hidden lg:block w-[1px] h-8 bg-black" />
+      <div className="hidden lg:block  h-12 top-[140px] left-[720px] border border-[#EAEAEA] w-0.5" />
 
       {/* Salary */}
       <div className="flex-1 w-full">
         <label htmlFor="minSalary" className="block mb-1 text-sm">
-          Min Salary: ₹{(minSalary / 100000).toFixed(0)}L
+          Min Salary: ₹
+          {minSalary >= 100000 ? (minSalary / 100000).toFixed(0) : 5}L
         </label>
+
         <input
           id="minSalary"
           type="range"
