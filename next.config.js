@@ -1,12 +1,16 @@
 // next.config.js
-import path from "path";
+const path = require("path");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: { ignoreBuildErrors: true },
-  eslint: { ignoreDuringBuilds: true },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 
-  // Webpack alias for production/Vercel
+  // Webpack alias (used on Vercel)
   webpack(config) {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
@@ -15,7 +19,7 @@ const nextConfig = {
     return config;
   },
 
-  // Turbopack alias for local dev
+  // Turbopack alias (used locally)
   turbopack: {
     resolveAlias: {
       "@": "./src",
@@ -23,4 +27,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
