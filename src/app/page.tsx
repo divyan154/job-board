@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import debounce from "lodash/debounce";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar";
 import JobForm from "../components/job-form";
-import Filter from "../components/Filter";
+import Filter from "../components/filter";
 import Joblisting from "../components/job-listing";
 
 export default function JobBoard() {
