@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import debounce from "lodash/debounce";
 
-import JobCard from "../components/JobCard";
+import Joblisting from "../components/Joblisting";
 import JobForm from "../components/JobForm";
 import Navbar from "../components/Navbar";
 import Filter from "../components/Filter";
@@ -88,9 +88,8 @@ const [minSalary,setMinSalary] = useState(5000) // Minimum salary for the range 
           setMinSalary={setMinSalary}
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16">
-         
           {jobs.length > 0 ? (
-            jobs.map((job) => <JobCard key={job.id} job={job} />)
+            jobs.map((job) => <Joblisting key={job.id} job={job} />)
           ) : (
             <div className="col-span-3 text-center text-gray-500">
               No jobs found

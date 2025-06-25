@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { getCompactTimeAgo } from "../utils/time";
 
-export default function joblisting({ job }) {
+export default function Joblisting({ job }) {
   const Imagearray = [
     { id: "Amazon", src: "/amazon.png" },
     { id: "Swiggy", src: "/swiggy.png" },
