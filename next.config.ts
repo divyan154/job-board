@@ -1,14 +1,21 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   typescript: {
-    // Set to true to allow TypeScript errors to block production builds
+    // Allow production builds even with type errors
     ignoreBuildErrors: true,
   },
   eslint: {
-    // Set to true to allow ESLint errors to block production builds
+    // Allow production builds even with lint errors
     ignoreDuringBuilds: true,
+  },
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      "@": path.resolve(__dirname, "src"),
+    };
+    return config;
   },
 };
 
