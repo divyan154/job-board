@@ -3,7 +3,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-export default function JobForm({ onSubmit, onCancel }) {
+export default function JobFormComponent
+  ({ onSubmit, onCancel }) {
   const {
     register,
     handleSubmit,
