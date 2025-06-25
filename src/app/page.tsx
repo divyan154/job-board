@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import debounce from "lodash/debounce";
-import Navbar from "@/components/Navbar";
-import JobForm from "@/components/JobForm";
-import Filter from "@/components/Filter";
-import Joblisting from "@/components/Joblisting";
+import Navbar from "../components/Navbar";
+import JobForm from "../components/JobForm";
+import Filter from "../components/Filter";
+import Joblisting from "../components/Joblisting";
 
 export default function JobBoard() {
   const [showForm, setShowForm] = useState(false);
