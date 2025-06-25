@@ -4,10 +4,10 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import debounce from "lodash/debounce";
 import {Satoshi} from "next/font/google";
-import JobCard from "@/components/jobCard";
-import JobForm from "@/components/jobForm";
+import JobCard from "@/components/JobCard";
+import JobForm from "@/components/JobForm";
 import Navbar from "@/components/Navbar";
-import Filter from "@/components/filter";
+import Filter from "@/components/Filter";
 export default function JobBoard() {
   const [showForm, setShowForm] = useState(false);
   const [jobs, setJobs] = useState([]);
