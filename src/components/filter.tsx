@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+
 
 interface FilterProps {
   title: string;
@@ -23,7 +23,9 @@ export default function Filter({
   setType,
   setMinSalary,
 }: FilterProps) {
+   
   return (
+    
     <div className="text-black bg-white rounded-xl shadow-sm p-4 mb-6 flex flex-col lg:flex-row items-center justify-between gap-4">
       {/* Title */}
       <div className="relative flex-1 w-full">
@@ -108,6 +110,7 @@ export default function Filter({
           className="w-full"
         />
       </div>
+      
     </div>
   );
 }

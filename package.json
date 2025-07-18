@@ -3,14 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-  
     "dev": "next dev --turbopack",
     "build": " next build",
     "start": "next start",
     "lint": "next lint",
     "seed": "tsx prisma/seed.ts",
-    
-      "postinstall": "prisma generate"
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^6.10.1",
@@ -21,7 +19,8 @@
     "prisma": "^6.10.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-hook-form": "^7.58.1"
+    "react-hook-form": "^7.58.1",
+    "react-range": "^1.10.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
