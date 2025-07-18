@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-
+import Link from "next/link";
 export default function Navbar({
   setShowForm,
 }: {
@@ -16,21 +16,23 @@ export default function Navbar({
             width={40}
             height={40}
           />
-          <a href="#" className="text-black font-medium">
+          <Link href="#" className="text-black font-medium">
             Home
-          </a>
-          <a href="#" className="text-black font-medium">
+          </Link>
+
+          <Link href="#" className="text-black font-medium">
             Find Jobs
-          </a>
-          <a href="#" className="text-black font-medium">
+          </Link>
+          <Link href="#" className="text-black font-medium">
             Find Talents
-          </a>
-          <a href="#" className="text-black font-medium">
+          </Link>
+          <Link href="#" className="text-black font-medium">
             About us
-          </a>
-          <a href="#" className="text-black font-medium">
-            Testimonials
-          </a>
+          </Link>
+          <Link href="#" className="text-black font-medium">
+            Testimononials
+          </Link>
+          
         </div>
         <button
           onClick={() => setShowForm(true)}
