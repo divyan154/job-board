@@ -1,16 +1,20 @@
 // Update the import path below if your prisma client is located elsewhere
 import { prisma } from "../../../lib/prisma";
 
-
 export async function GET(req: Request) {
+ 
   try {
     const { searchParams } = new URL(req.url);
-
+    console.log("Min Sakary in backend:", searchParams.get("salaryMin"));
+     console.log("Max Sakary in backend:", searchParams.get("salaryMax"));
     const title = searchParams.get("title") || undefined;
     const location = searchParams.get("location") || undefined;
     const type = searchParams.get("type") || undefined;
     const minSalary = searchParams.get("salaryMin")
       ? Number(searchParams.get("salaryMin"))
+      : undefined;
+    const maxSalary = searchParams.get("salaryMax")
+      ? Number(searchParams.get("salaryMax"))
       : undefined;
 
     const jobs = await prisma.job.findMany({
@@ -19,12 +23,16 @@ export async function GET(req: Request) {
         ...(location && {
           location: { contains: location, mode: "insensitive" },
         }),
-        ...(type && { type }),
-        ...(minSalary && {
-          salary: {
-            gte: minSalary,
-          },
-        }),
+        
+        ...(type && { type: { contains: type, mode: "insensitive" } }),
+        ...(minSalary && maxSalary
+          ? {
+              salary: {
+                ...(minSalary && { gte: 12 * minSalary }),
+                ...(maxSalary && { lte: 12 * maxSalary }),
+              },
+            }
+          : {}),
       },
       orderBy: {
         createdAt: "desc",

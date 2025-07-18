@@ -7,6 +7,7 @@ import Navbar from "../components/navbar";
 import JobForm from "../components/job-form";
 import Filter from "../components/filter";
 import Joblisting from "../components/job-listing";
+import { max } from "lodash";
 
 export default function JobBoard() {
   const [showForm, setShowForm] = useState(false);
@@ -16,7 +17,8 @@ export default function JobBoard() {
   const [locationFilter, setLocationFilter] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
   
-const [minSalary,setMinSalary] = useState(5000) // Minimum salary for the range slider
+  const [minSalary, setMinSalary] = useState(5000) // Minimum salary for the range slider
+  const [maxSalary, setMaxSalary] = useState(20000) // Maximum salary for the range slider
   // Define the original fetch function
   const fetchJobs = async (filters) => {
     const params = new URLSearchParams({
@@ -24,6 +26,7 @@ const [minSalary,setMinSalary] = useState(5000) // Minimum salary for the range 
       location: filters.location,
       type: filters.type,
       salaryMin: filters.salaryMin.toString(),
+      salaryMax: filters.salaryMax.toString()
     });
 
     const res = await fetch(`/api/jobs?${params.toString()}`);
@@ -37,13 +40,15 @@ const [minSalary,setMinSalary] = useState(5000) // Minimum salary for the range 
   ).current;
 
   useEffect(() => {
+    console.log("minSalary:", minSalary, "maxSalary:", maxSalary);
     debouncedFetch({
       title: titleFilter,
       location: locationFilter,
       type: typeFilter,
       salaryMin: minSalary,
+      salaryMax:maxSalary
     });
-  }, [titleFilter, locationFilter, typeFilter, minSalary]);
+  }, [titleFilter, locationFilter, typeFilter, minSalary,maxSalary]);
 
   const onSubmit = async (data) => {
     try {
@@ -57,6 +62,7 @@ const [minSalary,setMinSalary] = useState(5000) // Minimum salary for the range 
         location: locationFilter,
         type: typeFilter,
         salaryMin: minSalary,
+        salaryMax: maxSalary
       });
 
       reset();
@@ -82,10 +88,12 @@ const [minSalary,setMinSalary] = useState(5000) // Minimum salary for the range 
           location={locationFilter}
           type={typeFilter}
           minSalary={minSalary}
+          maxSalary={maxSalary}
           setTitle={setTitleFilter}
           setLocation={setLocationFilter}
           setType={setTypeFilter}
           setMinSalary={setMinSalary}
+          setMaxSalary={setMaxSalary}
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16">
           {jobs.length > 0 ? (

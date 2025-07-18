@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-
-
+// import Twothumbs from "./range-slider";
+import DoubleSlider from "./double-slider";
 interface FilterProps {
   title: string;
   location: string;
@@ -11,6 +11,7 @@ interface FilterProps {
   setLocation: (value: string) => void;
   setType: (value: string) => void;
   setMinSalary: (value: number) => void;
+  setMaxSalary: (value: number) => void;
 }
 
 export default function Filter({
@@ -18,14 +19,15 @@ export default function Filter({
   location,
   type,
   minSalary,
+  maxSalary,
   setTitle,
   setLocation,
   setType,
   setMinSalary,
+  setMaxSalary
 }: FilterProps) {
    
   return (
-    
     <div className="text-black bg-white rounded-xl shadow-sm p-4 mb-6 flex flex-col lg:flex-row items-center justify-between gap-4">
       {/* Title */}
       <div className="relative flex-1 w-full">
@@ -94,23 +96,20 @@ export default function Filter({
 
       {/* Salary */}
       <div className="flex-1 w-full">
-        <label htmlFor="minSalary" className="block mb-1 text-sm">
-          Min Salary: ₹
-          {minSalary >= 100000 ? (minSalary / 100000).toFixed(0) : 5}L
-        </label>
+        <div className="flex justify-between items-center mb-1">
+          <label
+            htmlFor="minSalary"
+            className="text-md font-bold text-gray-800"
+          >
+            Salary Per Month
+          </label>
+          <span className="text-sm font-bold text-gray-900">
+            ₹{minSalary / 1000}k – ₹{maxSalary / 1000}k
+          </span>
+        </div>
 
-        <input
-          id="minSalary"
-          type="range"
-          min={500000}
-          max={4000000}
-          step={100000}
-          value={minSalary}
-          onChange={(e) => setMinSalary(Number(e.target.value))}
-          className="w-full"
-        />
+        <DoubleSlider setMinSalary={setMinSalary} setMaxSalary={setMaxSalary} />
       </div>
-      
     </div>
   );
 }
